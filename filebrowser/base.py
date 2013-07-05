@@ -270,19 +270,7 @@ class FileObject():
 
     # IMAGE ATTRIBUTES
 
-    _dimensions_stored = None
-    def _dimensions(self):
-        if self.filetype != 'Image':
-            return None
-        if self._dimensions_stored != None:
-            return self._dimensions_stored
-        try:
-            im = Image.open(self.site.storage.open(self.path))
-            self._dimensions_stored = im.size
-        except:
-            pass
-        return self._dimensions_stored
-    dimensions = property(_dimensions)
+    dimensions = None
 
     def _width(self):
         if self.dimensions:
